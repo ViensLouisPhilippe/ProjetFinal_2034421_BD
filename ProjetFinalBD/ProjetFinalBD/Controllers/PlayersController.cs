@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.VisualBasic;
 using ProjetFinalBD.Data;
 using ProjetFinalBD.Models;
 
@@ -163,6 +165,22 @@ namespace ProjetFinalBD.Controllers
         private bool PlayerExists(int id)
         {
           return (_context.Players?.Any(e => e.PlayerId == id)).GetValueOrDefault();
+        }
+
+        public async Task<IActionResult> ContractParPlayer(int id)
+        {
+            Player? player = await _context.Players.FindAsync(id);
+
+            if (player == null) { return NotFound(); }
+
+            List<SqlParameter> parameters = new List<SqlParameter> { 
+                new SqlParameter{ParameterName = "@FirstName", Value = player.FirstName },
+                new SqlParameter{ParameterName = "@LastName", Value = player.LastName},
+                new SqlParameter{ParameterName = "@AverageSalaryYear", Value = player.Contract.ContractTerms},
+                new SqlParameter{ParameterName = "@YearExpire", Value = player.Contract.YearExpire}
+            };
+            List<VwInfoJoueurEtContract> vwInfoJoueurEtContracts = await _context.VwInfoJoueurEtContracts.FromSqlRaw("", parameters.ToArray()).ToListAsync();
+            return View(vwInfoJoueurEtContracts);
         }
     }
 }

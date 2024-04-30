@@ -20,51 +20,51 @@ CREATE OR ALTER VIEW Players.vw_InfoJoueurEtContract
 
 	--FONCTION : On veut retourner le nombre total de TouchDowns(TD) de l'equipe selon le ID (TeamID) selectionner 
 	-- Donc la question poser ici en utilisant cette fonction est : Combien de touchdown l'équipe a-t-elle obtenu en tout parmi ses joueurs peut importe la manière?
-	Create or ALter FUNCTION [Teams].ufn_NbrTotalDeTDPourLequipe
-	(@TeamID int)
-	RETURNS int
-	AS 
-	BEGIN
-		DECLARE @answer int;
+	--Create or ALter FUNCTION [Teams].ufn_NbrTotalDeTDPourLequipe
+	--(@TeamID int)
+	--RETURNS int
+	--AS 
+	--BEGIN
+	--	DECLARE @answer int;
 
-		SELECT @answer = ISNULL(SUM(Rec.TotalTD),0) + ISNULL(SUM(Pass.TotalTD),0) + ISNULL(SUM(Rush.TotalTD),0)
-		FROM BD1_BengalsCincinnati_TP1.Players.Player P
-			inner join BD1_BengalsCincinnati_TP1.[Stats].Stat S
-			on S.PlayerId = P.PlayerID
-			left join BD1_BengalsCincinnati_TP1.[Stats].Rushing Rush
-			on Rush.StatID = S.StatID
-			left join BD1_BengalsCincinnati_TP1.[Stats].Passing Pass
-			on Pass.StatID = S.StatID
-			left join BD1_BengalsCincinnati_TP1.[Stats].Receiving Rec
-			on Rec.StatID = S.StatID
-			where P.TeamID = @TeamID
-		RETURN @answer;
-	END
-	GO
+	--	SELECT @answer = ISNULL(SUM(Rec.TotalTD),0) + ISNULL(SUM(Pass.TotalTD),0) + ISNULL(SUM(Rush.TotalTD),0)
+		--FROM BD1_BengalsCincinnati_TP1.Players.Player P
+	--		inner join BD1_BengalsCincinnati_TP1.[Stats].Stat S
+	--		on S.PlayerId = P.PlayerID
+	--		left join BD1_BengalsCincinnati_TP1.[Stats].Rushing Rush
+	--		on Rush.StatID = S.StatID
+	--		left join BD1_BengalsCincinnati_TP1.[Stats].Passing Pass
+	--		on Pass.StatID = S.StatID
+	--		left join BD1_BengalsCincinnati_TP1.[Stats].Receiving Rec
+	--		on Rec.StatID = S.StatID
+	--		where P.TeamID = @TeamID
+	--	RETURN @answer;
+	--END
+	--GO
 	--Requete de test de la fonction
-	select TeamName, SeasonYear, Teams.ufn_NbrTotalDeTDPourLequipe(TeamID) as 'Nbr de touchdown Total'
-	from Teams.Team
+	--select TeamName, SeasonYear, Teams.ufn_NbrTotalDeTDPourLequipe(TeamID) as 'Nbr de touchdown Total'
+	--from Teams.Team
 
 	--DECLENCHEUR
 	--Le déclencheur est conçu pour garantir que lorsqu'un nouveau joueur est inséré, ses détails de contrat sont automatiquement ajoutés à la table Players.Contract.
 	--Cependant, il est important de noter que les valeurs de @ContractTerms, @AverageSalaryYear, @Guaranteed, @YearExpire, et @Acquired ne sont pas initialisées ou assignées dans le code fourni. 
-	go
-	Create or alter Trigger Players.trg_iContractToPlayer
-	on [Players].Player
-	after Insert
-	as
-	begin
-		declare @PlayerID int
-		declare @ContractTerms int
-		declare @AverageSalaryYear int
-		declare @Guaranteed int
-		declare @YearExpire int
-		declare @Acquired nvarchar(30)
-		select @PlayerID = PlayerID from inserted;
-		insert into Players.[Contract](PlayerID, ContractTerms, [AverageSalary/Year], Guaranteed,YearExpire, Acquired)
-		values (@PlayerID, @ContractTerms, @AverageSalaryYear, @Guaranteed ,@YearExpire, @Acquired);
-	end
-	go
+	--go
+	--Create or alter Trigger Players.trg_iContractToPlayer
+	--on [Players].Player
+	--after Insert
+	--as
+	--begin
+	--	declare @PlayerID int
+	--	declare @ContractTerms int
+	--	declare @AverageSalaryYear int
+	--	declare @Guaranteed int
+	--	declare @YearExpire int
+	--	declare @Acquired nvarchar(30)
+	--	select @PlayerID = PlayerID from inserted;
+	--	insert into Players.[Contract](PlayerID, ContractTerms, [AverageSalary/Year], Guaranteed,YearExpire, Acquired)
+	--	values (@PlayerID, @ContractTerms, @AverageSalaryYear, @Guaranteed ,@YearExpire, @Acquired);
+	--end
+	--go
 	
 	--TEST POUR DECLENCHEUR
 	--select * from Players.Player
