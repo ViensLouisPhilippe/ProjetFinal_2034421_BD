@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "kTE4M7XctDiCYZhjDX2Q8j9vFMjdLDMu8ZegcBWHS8ACOpb9OIPbveZ7g43U3NLfJztnpimvPmzcTLVwNPR2vw==",
+  "dgSpecHash": "hiwtCnGXUNXGf2oA0Rl88Wo+azh/bof0DsAg22efPGbj8MqLMJMWhVxsoonT5DzTcJwCqI8fxymzCJ1+RK3iKg==",
   "success": true,
   "projectFilePath": "C:\\Users\\2034421\\Desktop\\ProjetFinal_2034421_BD\\ProjetFinalBD\\ProjetFinalBD\\ProjetFinalBD.csproj",
   "expectedPackageFiles": [
@@ -219,10 +219,10 @@
     "C:\\Users\\2034421\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\2034421\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
     "C:\\Users\\2034421\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
-    "C:\\Users\\2034421\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.21\\microsoft.windowsdesktop.app.ref.6.0.21.nupkg.sha512",
-    "C:\\Users\\2034421\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.21\\microsoft.netcore.app.ref.6.0.21.nupkg.sha512",
-    "C:\\Users\\2034421\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.21\\microsoft.aspnetcore.app.ref.6.0.21.nupkg.sha512",
-    "C:\\Users\\2034421\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.21\\microsoft.netcore.app.host.win-x64.6.0.21.nupkg.sha512"
+    "C:\\Users\\2034421\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\2034421\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\2034421\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\2034421\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.28\\microsoft.netcore.app.host.win-x64.6.0.28.nupkg.sha512"
   ],
   "logs": []
 }
