@@ -1,0 +1,94 @@
+﻿@model IEnumerable<ProjetFinalBD.Models.VwInfoJoueurEtContract>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Index</h1>
+<a asp-action="Index">Back to List</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NomComplet)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BirthDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ContractTerms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AverageSalaryYear)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Guaranteed)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearExpire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Acquired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReasonUnavailability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateSinceUnavailability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedDateReturn)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NomComplet)
+                </td>
+                <td>
+                @Html.DisplayFor(modelItem => item.BirthDate)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ContractTerms)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AverageSalaryYear)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Guaranteed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YearExpire)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Acquired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Active)
+            </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReasonUnavailability)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateSinceUnavailability)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpectedDateReturn)
+                </td>
+        </tr>
+}
+    </tbody>
+</table>

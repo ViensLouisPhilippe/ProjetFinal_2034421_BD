@@ -182,5 +182,11 @@ namespace ProjetFinalBD.Controllers
             List<VwInfoJoueurEtContract> vwInfoJoueurEtContracts = await _context.VwInfoJoueurEtContracts.FromSqlRaw("", parameters.ToArray()).ToListAsync();
             return View(vwInfoJoueurEtContracts);
         }
+
+        public async Task<IActionResult> VmInfoPlayerAndContract()
+        {
+            List<VwInfoJoueurEtContract> viewResult = await _context.VwInfoJoueurEtContracts.ToListAsync();
+            return View(viewResult);
+        }
     }
 }
