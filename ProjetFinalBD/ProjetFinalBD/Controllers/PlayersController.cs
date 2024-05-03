@@ -167,26 +167,30 @@ namespace ProjetFinalBD.Controllers
           return (_context.Players?.Any(e => e.PlayerId == id)).GetValueOrDefault();
         }
 
-        public async Task<IActionResult> ContractParPlayer(int id)
-        {
-            Player? player = await _context.Players.FindAsync(id);
-
-            if (player == null) { return NotFound(); }
-
-            List<SqlParameter> parameters = new List<SqlParameter> { 
-                new SqlParameter{ParameterName = "@FirstName", Value = player.FirstName },
-                new SqlParameter{ParameterName = "@LastName", Value = player.LastName},
-                new SqlParameter{ParameterName = "@AverageSalaryYear", Value = player.Contract.ContractTerms},
-                new SqlParameter{ParameterName = "@YearExpire", Value = player.Contract.YearExpire}
-            };
-            List<VwInfoJoueurEtContract> vwInfoJoueurEtContracts = await _context.VwInfoJoueurEtContracts.FromSqlRaw("", parameters.ToArray()).ToListAsync();
-            return View(vwInfoJoueurEtContracts);
-        }
+        
 
         public async Task<IActionResult> VmInfoPlayerAndContract()
         {
             List<VwInfoJoueurEtContract> viewResult = await _context.VwInfoJoueurEtContracts.ToListAsync();
             return View(viewResult);
         }
+
+        public async Task<IActionResult> DeChiffrementPosition(int id)
+        {
+            Player? player = await _context.Players.FindAsync(id);
+            if (player == null) { return NotFound(); }
+
+            string query = "EXEC [dbo].[DeChiffrementPositionDesJoueurs] @PlayerID";
+
+            List<SqlParameter> parameters = new List<SqlParameter> {
+                new SqlParameter{ParameterName = "@PlayerID", Value = player.PlayerId }
+            };
+            List<DeChiffrePosition> deChiffrePositions = await _context.DeChiffrePositions.FromSqlRaw(query, parameters.ToArray()).ToListAsync();
+            if (deChiffrePositions.Count > 0)
+                return Ok(deChiffrePositions[0].Position);
+            else
+                return NotFound();
+        }
+
     }
 }

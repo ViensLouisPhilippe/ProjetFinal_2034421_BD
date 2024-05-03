@@ -26,7 +26,7 @@
                 @Html.DisplayNameFor(model => model.Number)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Position)
+                @Html.DisplayNameFor(model => model.PositionChiffree)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Available)
@@ -56,13 +56,13 @@
                 @Html.DisplayFor(modelItem => item.Number)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Position)
+                *CONFIDENTIAL*
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Available)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Team.TeamId)
+                @Html.DisplayFor(modelItem => item.Team.TeamName)
             </td>
             <td>
                 <a asp-action="Details" asp-route-id="@item.PlayerId">Details</a>

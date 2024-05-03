@@ -27,11 +27,10 @@ namespace ProjetFinalBD.Models
         public DateTime BirthDate { get; set; }
         public int AgeExperience { get; set; }
         public int? Number { get; set; }
-        [StringLength(25)]
-        public string? Position { get; set; }
         public bool Available { get; set; }
         [Column("TeamID")]
         public int TeamId { get; set; }
+        public byte[]? PositionChiffree { get; set; }
 
         [ForeignKey("TeamId")]
         [InverseProperty("Players")]

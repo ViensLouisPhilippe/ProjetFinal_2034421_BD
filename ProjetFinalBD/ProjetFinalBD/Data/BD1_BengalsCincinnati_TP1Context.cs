@@ -17,7 +17,9 @@ namespace ProjetFinalBD.Data
         {
         }
 
+        public virtual DbSet<Changelog> Changelogs { get; set; } = null!;
         public virtual DbSet<Contract> Contracts { get; set; } = null!;
+        public virtual DbSet<DeChiffrePosition> DeChiffrePositions { get; set; } = null!;
         public virtual DbSet<Defense> Defenses { get; set; } = null!;
         public virtual DbSet<Passing> Passings { get; set; } = null!;
         public virtual DbSet<Player> Players { get; set; } = null!;
@@ -38,6 +40,11 @@ namespace ProjetFinalBD.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Changelog>(entity =>
+            {
+                entity.Property(e => e.InstalledOn).HasDefaultValueSql("(getdate())");
+            });
+
             modelBuilder.Entity<Contract>(entity =>
             {
                 entity.HasOne(d => d.Player)
