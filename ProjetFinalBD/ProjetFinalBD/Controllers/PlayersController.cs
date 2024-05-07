@@ -9,6 +9,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
 using ProjetFinalBD.Data;
 using ProjetFinalBD.Models;
+using ProjetFinalBD.ViewModels;
 
 namespace ProjetFinalBD.Controllers
 {
@@ -192,5 +193,45 @@ namespace ProjetFinalBD.Controllers
                 return NotFound();
         }
 
+        public async Task<IActionResult> Vw_AllPlayersFromSameTeam(int id)
+        {
+            Player? player = await _context.Players.FindAsync(id);
+            if (player == null) { return NotFound(); }
+            string query = "EXEC [dbo].[GetAllPlayersFromSameTeam] @TeamId";
+
+
+            List<SqlParameter> parameters = new List<SqlParameter> {
+                new SqlParameter{ParameterName = "@TeamId", Value = player.TeamId }
+            };
+
+            List<VwAllPlayersFromSameTeam> viewResult = await _context.VwAllPlayersFromSameTeams.FromSqlRaw(query, parameters.ToArray()).ToListAsync();
+
+            return View(viewResult);
+        }
+
+
+        public IActionResult AjouterImageAuJoueur()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AjouterImageAuJoueur(ImageUploadVM imageUploadVM)
+        {
+            if (ModelState.IsValid)
+            {
+                if (imageUploadVM.FormFile != null && imageUploadVM.FormFile.Length >= 0)
+                {
+                    MemoryStream stream = new MemoryStream();
+                    await imageUploadVM.FormFile.CopyToAsync(stream);
+                    byte[] bytes = stream.ToArray();
+                    imageUploadVM.Image.FichierImage = bytes;
+                }
+                await _context.SaveChangesAsync();
+                return RedirectToAction("index");
+            }
+            return View(imageUploadVM.Image);
+        }
     }
 }

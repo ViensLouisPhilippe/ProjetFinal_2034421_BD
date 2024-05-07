@@ -1,0 +1,79 @@
+﻿@model IEnumerable<ProjetFinalBD.Models.VwAllPlayersFromSameTeam>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Joueur de l'équipe : @Model.FirstOrDefault()</h1>
+<a asp-action="Index">Back to List</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Number)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AgeExperience)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ContractTerms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Acquired)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.YearExpire)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Active)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReasonUnavailability)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ExpectedDateReturn)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Number)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AgeExperience)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.ContractTerms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Acquired)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.YearExpire)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Active)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ReasonUnavailability)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ExpectedDateReturn)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

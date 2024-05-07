@@ -21,6 +21,7 @@ namespace ProjetFinalBD.Data
         public virtual DbSet<Contract> Contracts { get; set; } = null!;
         public virtual DbSet<DeChiffrePosition> DeChiffrePositions { get; set; } = null!;
         public virtual DbSet<Defense> Defenses { get; set; } = null!;
+        public virtual DbSet<Image> Images { get; set; } = null!;
         public virtual DbSet<Passing> Passings { get; set; } = null!;
         public virtual DbSet<Player> Players { get; set; } = null!;
         public virtual DbSet<Receiving> Receivings { get; set; } = null!;
@@ -28,6 +29,7 @@ namespace ProjetFinalBD.Data
         public virtual DbSet<Stat> Stats { get; set; } = null!;
         public virtual DbSet<Status> Statuses { get; set; } = null!;
         public virtual DbSet<Team> Teams { get; set; } = null!;
+        public virtual DbSet<VwAllPlayersFromSameTeam> VwAllPlayersFromSameTeams { get; set; } = null!;
         public virtual DbSet<VwInfoJoueurEtContract> VwInfoJoueurEtContracts { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -61,6 +63,11 @@ namespace ProjetFinalBD.Data
                     .HasForeignKey(d => d.StatId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Defense_StatID");
+            });
+
+            modelBuilder.Entity<Image>(entity =>
+            {
+                entity.Property(e => e.Identifiant).HasDefaultValueSql("(newid())");
             });
 
             modelBuilder.Entity<Passing>(entity =>
@@ -119,6 +126,11 @@ namespace ProjetFinalBD.Data
                     .HasForeignKey(d => d.PlayerId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK_Status_PlayerID");
+            });
+
+            modelBuilder.Entity<VwAllPlayersFromSameTeam>(entity =>
+            {
+                entity.ToView("vw_AllPlayersFromSameTeam", "Players");
             });
 
             modelBuilder.Entity<VwInfoJoueurEtContract>(entity =>

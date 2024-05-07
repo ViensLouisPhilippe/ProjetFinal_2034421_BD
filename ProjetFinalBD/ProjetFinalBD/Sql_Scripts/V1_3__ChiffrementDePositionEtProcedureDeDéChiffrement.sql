@@ -1,4 +1,4 @@
-use BD1_BengalsCincinnati_TP1
+ use BD1_BengalsCincinnati_TP1
 go
 create MASTER key ENCRYPTION by Password = 'P4ssword!PasswordETC';
 go
