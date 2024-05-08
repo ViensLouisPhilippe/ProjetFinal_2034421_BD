@@ -260,30 +260,6 @@ namespace ProjetFinalBD.Controllers
             }
             return View(imageUploadVM);
         }
-        public async Task<IActionResult> VwVueImage(Player? p)
-        {
-            Player? player = await _context.Players.FindAsync(p.PlayerId);
-
-            if (_context.Images == null || player == null || player.Image == null)
-            {
-                return RedirectToAction("AjouterImageAuJoueur");
-            }
-
-            ImageViewModel image = new ImageViewModel()
-            {
-                Image = player.Image,
-                ImageUrl = player.Image.FichierImage == null ? null : $"data:image/png;base64,{Convert.ToBase64String(player.Image.FichierImage)}"
-            };
-
-            //VwVueImage? viewResult = await _context.VwVueImages.FirstOrDefaultAsync(x => x.Nom == player.Image.Player.LastName);
-            //if (viewResult == null)
-            //{
-            //    ModelState.AddModelError("Player", "ce joueur n'existe pas.");
-            //    return View();
-            //}
-
-            return View(image);
-        }
 
     }
 }

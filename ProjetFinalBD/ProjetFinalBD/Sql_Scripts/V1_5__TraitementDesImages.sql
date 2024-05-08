@@ -24,15 +24,3 @@ GO
 ALTER TABLE [Players].Player ADD  CONSTRAINT [FK_Player_ImageID] FOREIGN KEY([ImageID])
 REFERENCES Players.[Image] ([ImageID])
 GO
-Create or alter VIEW Players.Vw_vueImage
-	as
-		select CONCAT(P.FirstName,' ', P.LastName) as 'Full name', P.Number, P.AgeExperience, P.BirthDate, C.ContractTerms, T.TeamName,
-		I.Nom, I.Identifiant
-		from Players.Player P
-		left join Players.Image I
-		on I.PlayerID = P.PlayerID
-		left join Players.[Contract] C
-		on C.PlayerID = P.PlayerID
-		left join Teams.Team T
-		on T.TeamID = P.TeamID
-go
