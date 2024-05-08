@@ -12,6 +12,7 @@ namespace ProjetFinalBD.Models
     {
         public Player()
         {
+            Images = new HashSet<Image>();
             Stats = new HashSet<Stat>();
             Statuses = new HashSet<Status>();
         }
@@ -31,12 +32,19 @@ namespace ProjetFinalBD.Models
         [Column("TeamID")]
         public int TeamId { get; set; }
         public byte[]? PositionChiffree { get; set; }
+        [Column("ImageID")]
+        public int? ImageId { get; set; }
 
+        [ForeignKey("ImageId")]
+        [InverseProperty("Players")]
+        public virtual Image? Image { get; set; }
         [ForeignKey("TeamId")]
         [InverseProperty("Players")]
         public virtual Team Team { get; set; } = null!;
         [InverseProperty("Player")]
         public virtual Contract? Contract { get; set; }
+        [InverseProperty("Player")]
+        public virtual ICollection<Image> Images { get; set; }
         [InverseProperty("Player")]
         public virtual ICollection<Stat> Stats { get; set; }
         [InverseProperty("Player")]

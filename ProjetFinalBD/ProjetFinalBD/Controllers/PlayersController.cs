@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.VisualBasic;
+using NuGet.Protocol.Plugins;
 using ProjetFinalBD.Data;
 using ProjetFinalBD.Models;
 using ProjetFinalBD.ViewModels;
@@ -221,17 +222,47 @@ namespace ProjetFinalBD.Controllers
         {
             if (ModelState.IsValid)
             {
+                Player? player = await _context.Players.FirstOrDefaultAsync(x => x.LastName == imageUploadVM.Nom);
+                if (player == null)
+                {
+                    ModelState.AddModelError("Player", "ce joueur n'existe pas.");
+                    return View();
+                }
+
                 if (imageUploadVM.FormFile != null && imageUploadVM.FormFile.Length >= 0)
                 {
                     MemoryStream stream = new MemoryStream();
                     await imageUploadVM.FormFile.CopyToAsync(stream);
                     byte[] bytes = stream.ToArray();
-                    imageUploadVM.Image.FichierImage = bytes;
+                    player.Image = new Image() {
+                        Nom = player.LastName,
+                        Player = player,
+                        PlayerId = player.PlayerId,
+                        FichierImage = bytes
+                    };
+
+                    if (player.Image.FichierImage == null)
+                    {
+                        ModelState.AddModelError("Player", "Erreur dans la requête.");
+                        return View();
+                    }
                 }
                 await _context.SaveChangesAsync();
-                return RedirectToAction("index");
+                ViewData["message"] = "Image ajoutée pour " + player.LastName + " !";
+                return RedirectToAction("VwVueImage", player);
             }
-            return View(imageUploadVM.Image);
+            return View(imageUploadVM);
         }
+        public async Task<IActionResult> VwVueImageAsync(Player player)
+        {
+            VwVueImage? viewResult = await _context.VwVueImages.FirstOrDefaultAsync(x => x.Nom == player.LastName);
+            if (viewResult == null)
+            {
+                ModelState.AddModelError("Player", "ce joueur n'existe pas.");
+                return View();
+            }
+            return View(viewResult);
+        }
+
     }
 }

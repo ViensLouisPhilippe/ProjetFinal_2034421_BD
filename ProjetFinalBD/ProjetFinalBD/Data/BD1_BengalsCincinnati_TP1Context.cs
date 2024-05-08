@@ -31,6 +31,7 @@ namespace ProjetFinalBD.Data
         public virtual DbSet<Team> Teams { get; set; } = null!;
         public virtual DbSet<VwAllPlayersFromSameTeam> VwAllPlayersFromSameTeams { get; set; } = null!;
         public virtual DbSet<VwInfoJoueurEtContract> VwInfoJoueurEtContracts { get; set; } = null!;
+        public virtual DbSet<VwVueImage> VwVueImages { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -68,6 +69,12 @@ namespace ProjetFinalBD.Data
             modelBuilder.Entity<Image>(entity =>
             {
                 entity.Property(e => e.Identifiant).HasDefaultValueSql("(newid())");
+
+                entity.HasOne(d => d.Player)
+                    .WithMany(p => p.Images)
+                    .HasForeignKey(d => d.PlayerId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Image_PlayerID");
             });
 
             modelBuilder.Entity<Passing>(entity =>
@@ -81,6 +88,11 @@ namespace ProjetFinalBD.Data
 
             modelBuilder.Entity<Player>(entity =>
             {
+                entity.HasOne(d => d.Image)
+                    .WithMany(p => p.Players)
+                    .HasForeignKey(d => d.ImageId)
+                    .HasConstraintName("FK_Player_ImageID");
+
                 entity.HasOne(d => d.Team)
                     .WithMany(p => p.Players)
                     .HasForeignKey(d => d.TeamId)
@@ -136,6 +148,11 @@ namespace ProjetFinalBD.Data
             modelBuilder.Entity<VwInfoJoueurEtContract>(entity =>
             {
                 entity.ToView("vw_InfoJoueurEtContract", "Players");
+            });
+
+            modelBuilder.Entity<VwVueImage>(entity =>
+            {
+                entity.ToView("Vw_vueImage", "Players");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -1,4 +1,6 @@
-﻿using ProjetFinalBD.Models;
+﻿
+
+using System.Drawing;
 
 namespace ProjetFinalBD.ViewModels
 {
@@ -6,7 +8,10 @@ namespace ProjetFinalBD.ViewModels
     {
         public IFormFile? FormFile { get; set; }
 
-        public Image Image { get; set; } = null!;
+
+        public Image? Image { get; set; } = null!;
+
+        public string Nom { get; set; } = null!;
 
     }
 }

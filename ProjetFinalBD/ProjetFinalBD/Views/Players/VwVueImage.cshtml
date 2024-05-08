@@ -1,0 +1,61 @@
+﻿@model ProjetFinalBD.Models.VwVueImage
+
+@{
+    ViewData["Title"] = "VwVueImage";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>VwVueImage</h1>
+<a asp-action="Index">Back to List</a>
+
+
+<div>
+    <h4>@Model.FullName</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AgeExperience)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AgeExperience)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BirthDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BirthDate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.AgeExperience)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AgeExperience)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Number)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Number)
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TeamName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TeamName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContractTerms)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContractTerms)
+        </dd>
+    </dl>
+
+    @if (Model.Identifiant != null)
+    {
+       <img alt="Player" src="@(Model.Identifiant == null ? "" : Model.Identifiant)" />
+    }
+
+</div>
