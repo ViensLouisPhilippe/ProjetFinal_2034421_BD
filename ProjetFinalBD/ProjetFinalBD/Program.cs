@@ -7,7 +7,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 
 builder.Services.AddDbContext<BD1_BengalsCincinnati_TP1Context>(
-   options => options.UseSqlServer(builder.Configuration.GetConnectionString("BD1_BengalsCincinnati_TP1")));
+   options => {
+   options.UseSqlServer(builder.Configuration.GetConnectionString("BD1_BengalsCincinnati_TP1"));
+       options.UseLazyLoadingProxies();
+});
 
 var app = builder.Build();
 

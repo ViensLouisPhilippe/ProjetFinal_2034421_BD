@@ -45,8 +45,14 @@ namespace ProjetFinalBD.Controllers
             {
                 return NotFound();
             }
+            PlayerImageViewModel pivm = new PlayerImageViewModel()
+            {
+                Player = player,
+                ImageUrl = player.Image?.FichierImage == null ? null : $"data:image/png;base64,{Convert.ToBase64String(player.Image.FichierImage)}"
+            };
 
-            return View(player);
+
+            return View(pivm);
         }
 
         // GET: Players/Create
@@ -234,7 +240,8 @@ namespace ProjetFinalBD.Controllers
                     MemoryStream stream = new MemoryStream();
                     await imageUploadVM.FormFile.CopyToAsync(stream);
                     byte[] bytes = stream.ToArray();
-                    player.Image = new Image() {
+                    player.Image = new Image()
+                    {
                         Nom = player.LastName,
                         Player = player,
                         PlayerId = player.PlayerId,
@@ -249,19 +256,33 @@ namespace ProjetFinalBD.Controllers
                 }
                 await _context.SaveChangesAsync();
                 ViewData["message"] = "Image ajoutée pour " + player.LastName + " !";
-                return RedirectToAction("VwVueImage", player);
+                return RedirectToAction("Details", new { id = player.PlayerId });
             }
             return View(imageUploadVM);
         }
-        public async Task<IActionResult> VwVueImageAsync(Player player)
+        public async Task<IActionResult> VwVueImage(Player? p)
         {
-            VwVueImage? viewResult = await _context.VwVueImages.FirstOrDefaultAsync(x => x.Nom == player.LastName);
-            if (viewResult == null)
+            Player? player = await _context.Players.FindAsync(p.PlayerId);
+
+            if (_context.Images == null || player == null || player.Image == null)
             {
-                ModelState.AddModelError("Player", "ce joueur n'existe pas.");
-                return View();
+                return RedirectToAction("AjouterImageAuJoueur");
             }
-            return View(viewResult);
+
+            ImageViewModel image = new ImageViewModel()
+            {
+                Image = player.Image,
+                ImageUrl = player.Image.FichierImage == null ? null : $"data:image/png;base64,{Convert.ToBase64String(player.Image.FichierImage)}"
+            };
+
+            //VwVueImage? viewResult = await _context.VwVueImages.FirstOrDefaultAsync(x => x.Nom == player.Image.Player.LastName);
+            //if (viewResult == null)
+            //{
+            //    ModelState.AddModelError("Player", "ce joueur n'existe pas.");
+            //    return View();
+            //}
+
+            return View(image);
         }
 
     }

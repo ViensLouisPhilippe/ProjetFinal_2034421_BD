@@ -1,4 +1,4 @@
-﻿@model ProjetFinalBD.Models.Player
+﻿@model ProjetFinalBD.ViewModels.PlayerImageViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -12,37 +12,37 @@
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Player.LastName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.LastName)
+            @Html.DisplayFor(model => model.Player.LastName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.Player.FirstName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FirstName)
+            @Html.DisplayFor(model => model.Player.FirstName)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.BirthDate)
+            @Html.DisplayNameFor(model => model.Player.BirthDate)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.BirthDate)
+            @Html.DisplayFor(model => model.Player.BirthDate)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.AgeExperience)
+            @Html.DisplayNameFor(model => model.Player.AgeExperience)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.AgeExperience)
+            @Html.DisplayFor(model => model.Player.AgeExperience)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Number)
+            @Html.DisplayNameFor(model => model.Player.Number)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Number)
+            @Html.DisplayFor(model => model.Player.Number)
         </dd>
         <dt class="col-sm-2">
-            @Html.DisplayNameFor(model => model.PositionChiffree)
+            @Html.DisplayNameFor(model => model.Player.PositionChiffree)
         </dt>
         <dd class="col-sm-10">
             *CONFIDENTIAL* 
@@ -51,21 +51,30 @@
 
         
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Available)
+            @Html.DisplayNameFor(model => model.Player.Available)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Available)
+            @Html.DisplayFor(model => model.Player.Available)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Team)
+            @Html.DisplayNameFor(model => model.Player.Team)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Team.TeamName)
+            @Html.DisplayFor(model => model.Player.Team.TeamName)
         </dd>
     </dl>
+    @if (Model.Player.Image != null)
+    {
+        <div >
+            <img style="height: auto; width: 400px;" alt="@Model.Player.Image?.Nom" src="@Model.ImageUrl" />
+
+        </div>
+    }
+    
 </div>
+
 <div>
-    <a asp-action="Vw_AllPlayersFromSameTeam" asp-route-id="@Model.PlayerId">V1_4_VwContractAndStatusByPlayer - Voir joueur de la même équipe</a>
+    <a asp-action="Vw_AllPlayersFromSameTeam" asp-route-id="@Model.Player.PlayerId">V1_4_VwContractAndStatusByPlayer - Voir joueur de la même équipe</a>
     <br>
     <a asp-action="Index">Back to List</a>
 </div>
@@ -73,7 +82,7 @@
 
 <script>
     function showDeChiffrePosition() {
-        var playerId = @Model?.PlayerId;
+        var playerId = @Model?.Player.PlayerId;
 
         $.ajax({
             url: '/Players/DeChiffrementPosition/' + playerId,

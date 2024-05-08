@@ -1,6 +1,7 @@
 ﻿
 
-using System.Drawing;
+
+using ProjetFinalBD.Models;
 
 namespace ProjetFinalBD.ViewModels
 {

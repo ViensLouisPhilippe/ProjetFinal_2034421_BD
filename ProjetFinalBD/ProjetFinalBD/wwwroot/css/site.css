@@ -19,3 +19,8 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.imageFrame {
+    height : 400px;
+    width : auto;
+}

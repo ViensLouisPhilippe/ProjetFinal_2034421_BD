@@ -492,3 +492,5 @@ C:\Users\2034421\Desktop\ProjetFinal_2034421_BD\ProjetFinalBD\ProjetFinalBD\obj\
 C:\Users\2034421\Desktop\ProjetFinal_2034421_BD\ProjetFinalBD\ProjetFinalBD\obj\Debug\net6.0\ProjetFinalBD.pdb
 C:\Users\2034421\Desktop\ProjetFinal_2034421_BD\ProjetFinalBD\ProjetFinalBD\obj\Debug\net6.0\ProjetFinalBD.genruntimeconfig.cache
 C:\Users\2034421\Desktop\ProjetFinal_2034421_BD\ProjetFinalBD\ProjetFinalBD\obj\Debug\net6.0\ref\ProjetFinalBD.dll
+C:\Users\2034421\Desktop\ProjetFinal_2034421_BD\ProjetFinalBD\ProjetFinalBD\bin\Debug\net6.0\Castle.Core.dll
+C:\Users\2034421\Desktop\ProjetFinal_2034421_BD\ProjetFinalBD\ProjetFinalBD\bin\Debug\net6.0\Microsoft.EntityFrameworkCore.Proxies.dll

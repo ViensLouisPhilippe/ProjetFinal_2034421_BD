@@ -19,7 +19,7 @@ namespace ProjetFinalBD.Models
         [Column("ImageID")]
         public int ImageId { get; set; }
         [StringLength(100)]
-        public string Nom { get; set; } = null!;
+        public string? Nom { get; set; }
         public Guid Identifiant { get; set; }
         [Column("PlayerID")]
         public int PlayerId { get; set; }
