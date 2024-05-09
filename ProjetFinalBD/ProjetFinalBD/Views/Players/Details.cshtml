@@ -8,20 +8,14 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Player</h4>
+    <h4>@Model.FullName</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Player.LastName)
+            @Html.DisplayNameFor(model => model.FullName)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Player.LastName)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Player.FirstName)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Player.FirstName)
+            @Html.DisplayFor(model => model.FullName)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.Player.BirthDate)
@@ -61,6 +55,7 @@
         </dt>
         <dd class = "col-sm-10">
             @Html.DisplayFor(model => model.Player.Team.TeamName)
+            <a asp-action="Vw_AllPlayersFromSameTeam" asp-route-id="@Model.Player.PlayerId">- Voir joueur de la même équipe</a>
         </dd>
     </dl>
     @if (Model.Player.Image != null)
@@ -74,8 +69,7 @@
 </div>
 
 <div>
-    <a asp-action="Vw_AllPlayersFromSameTeam" asp-route-id="@Model.Player.PlayerId">V1_4_VwContractAndStatusByPlayer - Voir joueur de la même équipe</a>
-    <br>
+    
     <a asp-action="Index">Back to List</a>
 </div>
 

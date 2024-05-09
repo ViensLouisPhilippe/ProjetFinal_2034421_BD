@@ -1,11 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cKVwMb+8tfw2QJB7DC84uhcbcUAo1/YIUGDQg2/kQHBTN/QKZtVCmAdCL0qN9a/EgNvcmmZIwKV9eRIsHx3RvQ==",
+  "dgSpecHash": "HDMNJ2YzPB+HysyvbYDJZ1A+mVY5bqnaSbWdzrvR8ymX5V0gS6Aa/XjfoY7EjmJO6wAcjvnlVBi7CUGm/ye56A==",
   "success": true,
   "projectFilePath": "C:\\Users\\2034421\\Desktop\\ProjetFinal_2034421_BD\\ProjetFinalBD\\ProjetFinalBD\\ProjetFinalBD.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\2034421\\.nuget\\packages\\castle.core\\4.4.1\\castle.core.4.4.1.nupkg.sha512",
-    "C:\\Users\\2034421\\.nuget\\packages\\fontawesome\\4.7.0\\fontawesome.4.7.0.nupkg.sha512",
     "C:\\Users\\2034421\\.nuget\\packages\\humanizer\\2.14.1\\humanizer.2.14.1.nupkg.sha512",
     "C:\\Users\\2034421\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\2034421\\.nuget\\packages\\humanizer.core.af\\2.14.1\\humanizer.core.af.2.14.1.nupkg.sha512",

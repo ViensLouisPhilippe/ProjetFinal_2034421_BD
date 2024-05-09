@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -26,10 +27,20 @@ namespace ProjetFinalBD.Controllers
         // GET: Players
         public async Task<IActionResult> Index()
         {
-            var bD1_BengalsCincinnati_TP1Context = _context.Players.Include(p => p.Team);
-            return View(await bD1_BengalsCincinnati_TP1Context.ToListAsync());
-        }
+            var viewResult = _context.Players.AsQueryable();
+            viewResult = viewResult.OrderBy(x => x.LastName).ThenBy(x => x.FirstName).Take(_context.Players.Count()/ 2);
+            var playerListed = await viewResult.ToListAsync();
 
+            return View(playerListed);
+        }
+        public async Task<IActionResult> IndexPage2()
+        {
+            var viewResult = _context.Players.AsQueryable();
+            viewResult = viewResult.OrderByDescending(x => x.LastName).ThenBy(x => x.FirstName).Take(_context.Players.Count() / 2);
+            var playerListed = await viewResult.ToListAsync();
+
+            return View(playerListed.OrderBy(x => x.LastName).ThenBy(x => x.FirstName));
+        }
         // GET: Players/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -48,8 +59,9 @@ namespace ProjetFinalBD.Controllers
             PlayerImageViewModel pivm = new PlayerImageViewModel()
             {
                 Player = player,
-                ImageUrl = player.Image?.FichierImage == null ? null : $"data:image/png;base64,{Convert.ToBase64String(player.Image.FichierImage)}"
-            };
+                ImageUrl = player.Image?.FichierImage == null ? null : $"data:image/png;base64,{Convert.ToBase64String(player.Image.FichierImage)}",
+                FullName = player.FirstName + " " + player.LastName
+        };
 
 
             return View(pivm);

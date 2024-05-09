@@ -8,7 +8,6 @@
     ".NETCoreApp,Version=v6.0": {
       "ProjetFinalBD/1.0.0": {
         "dependencies": {
-          "FontAwesome": "4.7.0",
           "Microsoft.EntityFrameworkCore.Design": "6.0.29",
           "Microsoft.EntityFrameworkCore.Proxies": "6.0.29",
           "Microsoft.EntityFrameworkCore.SqlServer": "6.0.29",
@@ -39,7 +38,6 @@
           }
         }
       },
-      "FontAwesome/4.7.0": {},
       "Humanizer/2.14.1": {
         "dependencies": {
           "Humanizer.Core.af": "2.14.1",
@@ -2617,13 +2615,6 @@
       "sha512": "sha512-zanbjWC0Y05gbx4eGXkzVycOQqVOFVeCjVsDSyuao9P4mtN1w3WxxTo193NGC7j3o2u3AJRswaoC6hEbnGACnQ==",
       "path": "castle.core/4.4.1",
       "hashPath": "castle.core.4.4.1.nupkg.sha512"
-    },
-    "FontAwesome/4.7.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-n4H/brfszElyoZ4kmGh8E75uqvLzLvFr3h2PFVdPH1LwUmWIpeqdaW2pcC4oZAhg7sESyObh0IZpAI8COCNeUg==",
-      "path": "fontawesome/4.7.0",
-      "hashPath": "fontawesome.4.7.0.nupkg.sha512"
     },
     "Humanizer/2.14.1": {
       "type": "package",

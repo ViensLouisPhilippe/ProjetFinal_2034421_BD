@@ -7,5 +7,7 @@ namespace ProjetFinalBD.ViewModels
         public Player Player{ get; set; } = null!;
 
         public string? ImageUrl { get; set; }
+
+        public string? FullName { get; set; }
     }
 }

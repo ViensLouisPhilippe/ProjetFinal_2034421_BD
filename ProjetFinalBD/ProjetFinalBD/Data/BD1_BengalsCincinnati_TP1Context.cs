@@ -31,7 +31,6 @@ namespace ProjetFinalBD.Data
         public virtual DbSet<Team> Teams { get; set; } = null!;
         public virtual DbSet<VwAllPlayersFromSameTeam> VwAllPlayersFromSameTeams { get; set; } = null!;
         public virtual DbSet<VwInfoJoueurEtContract> VwInfoJoueurEtContracts { get; set; } = null!;
-        public virtual DbSet<VwVueImage> VwVueImages { get; set; } = null!;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -148,11 +147,6 @@ namespace ProjetFinalBD.Data
             modelBuilder.Entity<VwInfoJoueurEtContract>(entity =>
             {
                 entity.ToView("vw_InfoJoueurEtContract", "Players");
-            });
-
-            modelBuilder.Entity<VwVueImage>(entity =>
-            {
-                entity.ToView("Vw_vueImage", "Players");
             });
 
             OnModelCreatingPartial(modelBuilder);
