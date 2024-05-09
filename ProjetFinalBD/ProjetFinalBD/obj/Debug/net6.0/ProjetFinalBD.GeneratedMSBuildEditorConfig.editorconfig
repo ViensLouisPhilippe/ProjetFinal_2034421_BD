@@ -16,26 +16,6 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\2034421\Desktop\ProjetFinal_2034421_BD\ProjetFinalBD\ProjetFinalBD
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Contracts/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RzXENyZWF0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Contracts/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Contracts/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Contracts/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Contracts/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29udHJhY3RzXEluZGV4LmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Players/AjouterImageAuJoueur.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGxheWVyc1xBam91dGVySW1hZ2VBdUpvdWV1ci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -78,26 +58,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Teams/Create.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcQ3JlYXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Teams/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcRGVsZXRlLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Teams/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcRGV0YWlscy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Teams/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcRWRpdC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/Teams/Index.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGVhbXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/2034421/Desktop/ProjetFinal_2034421_BD/ProjetFinalBD/ProjetFinalBD/Views/_ViewImports.cshtml]

@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Joueur de l'équipe : @Model.FirstOrDefault()</h1>
+<h1>Players playing for the @Model.FirstOrDefault().TeamName</h1>
 <a asp-action="Index">Back to List</a>
 
 <table class="table">
@@ -23,12 +23,6 @@
             
             <th>
                 @Html.DisplayNameFor(model => model.ContractTerms)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Acquired)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.YearExpire)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Active)
@@ -57,12 +51,6 @@
                 
                 <td>
                     @Html.DisplayFor(modelItem => item.ContractTerms)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Acquired)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.YearExpire)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Active)
